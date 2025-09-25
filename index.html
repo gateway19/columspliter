@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colum-spliter</title>
+    <script>
+function splitToColumns(text, rowsCo) {
+    const n = Math.ceil(text.length / rowsCo);
+    const columns = [];
+    
+    for (let i = 0; i < n; i++) {
+        const start = i * rowsCo;
+        const end = start + rowsCo;
+        columns.push(text.slice(start, end));
+    }
+    
+    return columns;
+}
+    </script>
+    <style>
+        .container {
+  display: flex;
+  /* крайние блоки прижмуться к краям родительского элемента, 
+     остальные равномерно займут пространство между ними. */
+  justify-content: space-between;
+}
+    </style>
+</head>
+<body>
+<div class="container" id="mainn">
+ 
+</div>
+
+
+
+
+
+
+
+
+    <script>
+        
+var text_i = prompt("Input text:")
+if (text_i == null || text_i==""){
+    alert("ПУСТО input") 
+}
+var rows_count = 20
+var rows_count_i = prompt("ROWS in 1 COLUM (DEFAULT 20):")
+if ( !(rows_count_i == null||rows_count_i=="")){
+        rows_count = rows_count_i 
+
+}
+var rows_co=Number(rows_count)
+text_i = text_i.split("\r")
+
+const result = splitToColumns(text_i, rows_co);
+console.log(result);
+
+result.forEach(element => {
+
+     var div = document.createElement("div");
+      //div.setAttribute("class", "element");
+      var temp=""
+    element.forEach(element => {
+        temp+="<p>"+element+`</p>`
+    });
+
+
+      div.innerHTML = temp;
+    document.getElementById("mainn").appendChild(div)
+    
+});
+    </script>
+</body>
+</html>
